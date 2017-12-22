@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col">
+    <h1>{{name}}</h1>
+    <ul>
+      <li>Age: {{age}}</li>
+      <li>Email: {{email}}</li>
+      <li>Address: {{address.street}} {{address.city}}, {{address.state}}</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="onClick()">Toggle Name</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary" (click)="editUser()">Edit User</button>
+  </div>
+</div>
+<div class="row" *ngIf="isEdit">
+  <div class="col">
+    <form>
+    <div class="row">
+      <div class="col">
+        <h2>Edit User</h2>
+        <label for="name">Name:</label>
+        <input type="text" [(ngModel)]="name" name="name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="age">Age:</label>
+        <input type="text"  [(ngModel)]="age" name="age">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="email">Email:</label>
+        <input type="text"  [(ngModel)]="email" name="email">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="street">Street:</label>
+        <input type="text"  [(ngModel)]="address.street" name="street">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="city">City:</label>
+        <input type="text"  [(ngModel)]="address.city" name="city">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="state">State:</label>
+        <input type="text" [(ngModel)]="address.state" name="state">
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h2>Hobbies</h2>
+    <form (submit)="addHobby(hobby.value)">
+      <div>
+        <label for="hobby">Hobby:</label>
+        <input type="text" #hobby>
+      </div>
+    </form>
+    <ul>
+      <li *ngFor="let hobby of hobbies; let i = index">
+        {{i+1}}: {{hobby}} 
+        <button class="btn btn-danger" (click)="deleteHobby(i)">X</button> 
+      </li>
+    </ul>
+  </div>
+</div>
